@@ -1,0 +1,20 @@
+select{
+	float: left;
+	margin-right: 50px;
+}
+#knoppenMid{
+	float: left;
+}
+div>span{
+	margin: 5px;
+	float: left;
+	clear: left;
+}
+input{
+	float: left;
+	clear: left;
+	margin-left: 250px;
+}
+#wel{
+	margin-left: 50px;
+}
