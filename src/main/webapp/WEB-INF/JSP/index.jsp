@@ -1,4 +1,7 @@
 <%@ page contentType='text/html' pageEncoding='UTF-8' session='false'%>
+<%@taglib prefix='spring' uri='http://www.springframework.org/tags'%>
+<%@taglib prefix='form' uri='http://www.springframework.org/tags/form'%>
+<%@taglib prefix='fmt' uri='http://java.sun.com/jsp/jstl/fmt'%>
 <%@taglib prefix='c' uri='http://java.sun.com/jsp/jstl/core'%>
 <!DOCTYPE html>
 <html>
@@ -26,11 +29,12 @@
 <span id="left" class="knop">&lt;</span>
 <span id="allleft" class="knop">&lt;&lt;</span>
 </div>
-<form>
+<form:form action="" method="post" commandName="">
 <div>
-<select id="wel" size="10"></select>
+<form:select path="" id="wel"/>
 <input type="submit" value="Afwaarderen" id="afwaarderen" disabled>
 </div>
-</form>
+</form:form>
+<!--TOODOO form aanpassen voor submit --> 
 </body>
 </html>
