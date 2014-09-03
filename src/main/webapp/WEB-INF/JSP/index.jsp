@@ -16,21 +16,16 @@
 </head>
 <body>
 	<h1>Afwaarderen</h1>
-	<form id="form" action="afwaarderen">
+	<form id="form">
 	<select multiple size="10" id="niet">
-		<c:if test="${not empty filialen}">
-			<c:forEach items="${filialen}" var="filiaal">
-				<option value="${filiaal.id}">${filiaal.naam}</option>
-			</c:forEach>
-		</c:if>
 	</select>
 	<div id="knoppenMid">
 		<span id="right" class="knop">&gt;</span> <span id="allright" class="knop">&gt;&gt;</span> <span id="left" class="knop">&lt;</span> <span id="allleft" class="knop">&lt;&lt;</span>
 	</div>
 	<div>
-		<select id="wel" multiple size="10"></select> <!-- <span id="afwaarderen" class=knop>Afwaarderen</span> -->
+		<select id="wel" multiple size="10"></select>
 	</div>
-	<input type="submit" value="afwaarderen" id="afwaarderen">
+	<input type="submit" value="afwaarderen" id="afwaarderen" disabled>
 	</form>
 </body>
 </html>

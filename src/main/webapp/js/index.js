@@ -1,33 +1,54 @@
-var vlag = false;
 $(window).load(function() {
+	$.getJSON("filialen", function(data) {
+		for(var i = 0; i < data.length; i++) {
+			var $nieuw = $('<option>').attr("value", data[i].id.toString());
+			$nieuw.text(data[i].naam);
+			$('#niet').append($nieuw);
+		}
+	});/*.done(function(){
+		$('select option').dblclick(function (e){
+			if($(this).parent().attr('id') === 'niet'){
+				$(this).appendTo('#wel');
+			}
+			else{
+				$(this).appendTo('#niet');
+			}
+			controle();
+		});
+	});*/
+	
+	$('select').on('dblclick','option', function (e){
+			if($(this).parent().attr('id') === 'niet'){
+				$(this).appendTo('#wel');
+			}
+			else{
+				$(this).appendTo('#niet');
+			}
+			controle();
+		});
+	
 	$('.knop').button();
 	$('#right').on("click", function() {
-		vlag = true;
 		$('#niet > option:selected').appendTo('#wel');
 		controle();
 	});
 	$('#allright').on("click", function() {
-		vlag = true;
 		$('#niet > option').appendTo('#wel');
 		controle();
 	});
 	$('#left').on("click", function() {
 		$('#wel > option:selected').appendTo('#niet');
 		if ($('#wel').children().length == 0) {
-			vlag = false;
 		}
 		controle();
 	});
 	$('#allleft').on("click", function() {
-		vlag = false;
 		$('#wel > option').appendTo('#niet');
 		controle();
 	});
 
 	$('#form').submit(function(e) {
 		e.preventDefault();
-		var form = $(this);
-		var url = form.attr('action');
 		var optVals = [];
 		$('#wel > option').each(function() {
 			optVals.push({
@@ -39,21 +60,21 @@ $(window).load(function() {
 			type : 'POST',
 			dataType : 'json',
 			contentType : 'application/json',
-			url : url,
 			data : JSON.stringify(optVals),
 			success : function(data, textStatus) {
 				console.log(data);
-				// alert("success");
 			},
 			error : function(xhr, textStatus, errorThrown) {
-				// alert('request failed'+errorThrown);
+			},
+			complete : function(data) {
+				window.location.href = "bevestigen";
 			}
 		});
 	});
 });
 
 function controle() {
-	if (!vlag) {
+	if ($('#wel > option').length === 0) {
 		$("#afwaarderen").prop('disabled', true);
 	} else {
 		$("#afwaarderen").prop('disabled', false);

@@ -1,5 +1,6 @@
 package be.vdab.services;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,12 +24,11 @@ public class FiliaalServiceImpl implements FiliaalService{
 	}
 
 	@Override
-	public List<Filiaal> findByIdIn(Iterable<Long> filiaalIds) {
-		return filiaalDAO.findAll(filiaalIds);
-	}
-
-	@Override
-	public void save(Iterable<Filiaal> filialen) {
+	public void afwaarderen(Iterable<Long> filiaalIds) {
+		List<Filiaal> filialen = filiaalDAO.findAll(filiaalIds);
+		for (Filiaal filiaal : filialen) {
+			filiaal.setWaardeGebouw(BigDecimal.ZERO);
+		}
 		filiaalDAO.save(filialen);
 	}
 
