@@ -22,4 +22,14 @@ public class FiliaalServiceImpl implements FiliaalService{
 		return filiaalDAO.findAll();
 	}
 
+	@Override
+	public List<Filiaal> findByIdIn(Iterable<Long> filiaalIds) {
+		return filiaalDAO.findAll(filiaalIds);
+	}
+
+	@Override
+	public void save(Iterable<Filiaal> filialen) {
+		filiaalDAO.save(filialen);
+	}
+
 }

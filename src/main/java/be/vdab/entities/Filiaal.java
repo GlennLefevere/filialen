@@ -12,7 +12,7 @@ public class Filiaal implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	private long id;
 
 	private String gemeente;
 
@@ -34,11 +34,11 @@ public class Filiaal implements Serializable {
 	public Filiaal() {
 	}
 
-	public int getId() {
+	public Long getId() {
 		return this.id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
