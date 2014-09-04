@@ -1,32 +1,32 @@
 $(window).load(function() {
 	$.getJSON("filialen", function(data) {
-		for(var i = 0; i < data.length; i++) {
+		for (var i = 0; i < data.length; i++) {
 			var $nieuw = $('<option>').attr("value", data[i].id.toString());
 			$nieuw.text(data[i].naam);
 			$('#niet').append($nieuw);
 		}
-	});/*.done(function(){
-		$('select option').dblclick(function (e){
-			if($(this).parent().attr('id') === 'niet'){
-				$(this).appendTo('#wel');
+	}).done(function() {
+		/*
+		 * $('option').dblclick(function (e){ if($(this).parent().attr('id') ===
+		 * 'niet'){ $(this).appendTo('#wel'); } else{ $(this).appendTo('#niet'); }
+		 * controle(); });
+		 */
+		$('select').dblclick(function(e) {
+			if (this.id === 'niet') {
+				$(this).find(':selected').appendTo('#wel');
 			}
 			else{
-				$(this).appendTo('#niet');
+				$(this).find(':selected').appendTo('#niet');
 			}
-			controle();
 		});
-	});*/
-	
-	$('select').on('dblclick','option', function (e){
-			if($(this).parent().attr('id') === 'niet'){
-				$(this).appendTo('#wel');
-			}
-			else{
-				$(this).appendTo('#niet');
-			}
-			controle();
-		});
-	
+	});
+
+	/*
+	 * $('select').on('dblclick','option', function (e){
+	 * if($(this).parent().attr('id') === 'niet'){ $(this).appendTo('#wel'); }
+	 * else{ $(this).appendTo('#niet'); } controle(); });
+	 */
+
 	$('.knop').button();
 	$('#right').on("click", function() {
 		$('#niet > option:selected').appendTo('#wel');
